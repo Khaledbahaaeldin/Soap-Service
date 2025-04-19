@@ -56,7 +56,7 @@ Follow these steps to set up and run the project locally:
 ### Step 1: Clone the Repository
 Clone the project source code:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Khaledbahaaeldin/Soap-Service
 cd <project-directory>
 ```
 
