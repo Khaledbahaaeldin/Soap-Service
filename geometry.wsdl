@@ -1,0 +1,116 @@
+<definitions name="GeometryService" targetNamespace="http://localhost:8000/geometry" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost:8000/geometry" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema targetNamespace="http://localhost:8000/geometry">
+      <xsd:element name="calculateSquareArea">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="side" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="calculateSquareAreaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="area" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="calculateRectangleArea">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="length" type="xsd:float"/>
+            <xsd:element name="width" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="calculateRectangleAreaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="area" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="calculateCircleArea">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="radius" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="calculateCircleAreaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="area" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="calculateSquareAreaRequest">
+    <part name="parameters" element="tns:calculateSquareArea"/>
+  </message>
+  <message name="calculateSquareAreaResponse">
+    <part name="parameters" element="tns:calculateSquareAreaResponse"/>
+  </message>
+  <message name="calculateRectangleAreaRequest">
+    <part name="parameters" element="tns:calculateRectangleArea"/>
+  </message>
+  <message name="calculateRectangleAreaResponse">
+    <part name="parameters" element="tns:calculateRectangleAreaResponse"/>
+  </message>
+  <message name="calculateCircleAreaRequest">
+    <part name="parameters" element="tns:calculateCircleArea"/>
+  </message>
+  <message name="calculateCircleAreaResponse">
+    <part name="parameters" element="tns:calculateCircleAreaResponse"/>
+  </message>
+  <portType name="GeometryServicePortType">
+    <operation name="calculateSquareArea">
+      <input message="tns:calculateSquareAreaRequest"/>
+      <output message="tns:calculateSquareAreaResponse"/>
+    </operation>
+    <operation name="calculateRectangleArea">
+      <input message="tns:calculateRectangleAreaRequest"/>
+      <output message="tns:calculateRectangleAreaResponse"/>
+    </operation>
+    <operation name="calculateCircleArea">
+      <input message="tns:calculateCircleAreaRequest"/>
+      <output message="tns:calculateCircleAreaResponse"/>
+    </operation>
+  </portType>
+  <binding name="GeometryServiceBinding" type="tns:GeometryServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="calculateSquareArea">
+      <soap:operation soapAction="http://localhost:8000/geometry/calculateSquareArea"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="calculateRectangleArea">
+      <soap:operation soapAction="http://localhost:8000/geometry/calculateRectangleArea"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="calculateCircleArea">
+      <soap:operation soapAction="http://localhost:8000/geometry/calculateCircleArea"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="GeometryService">
+    <port name="GeometryServicePort" binding="tns:GeometryServiceBinding">
+      <soap:address location="http://localhost:8000/geometry"/>
+    </port>
+  </service>
+</definitions>
